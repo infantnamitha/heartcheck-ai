@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #e11d48;
+  --color-secondary: #a855f7;
+  --color-bg: #fff5f7;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: #fff5f7;
+  min-height: 100vh;
+}
+
+.dark body { background: #1a0a0f; }
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-rose-500 to-pink-500 text-white font-semibold px-6 py-3 rounded-2xl shadow-lg hover:shadow-rose-200 hover:-translate-y-0.5 transition-all duration-200;
+  }
+  .btn-outline {
+    @apply border-2 border-rose-300 text-rose-600 font-semibold px-6 py-3 rounded-2xl hover:bg-rose-50 transition-all duration-200;
+  }
+  .card {
+    @apply bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border border-rose-100/50 p-6;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-rose-200 focus:outline-none focus:ring-2 focus:ring-rose-300 focus:border-transparent bg-white/90 text-gray-700 font-body transition-all;
+  }
+}
