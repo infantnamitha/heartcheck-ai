@@ -7,7 +7,6 @@ SECRET_KEY = 'django-insecure-heartcheck-secret-key-change-in-production-2024'
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
-
 # Applications
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -16,20 +15,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
-
     'api',
 ]
-
 
 # Middleware
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-
-    'django.middleware.security.SecurityMiddleware',
+    'django.middleware.security.SecurityMiddleware',   # ✅ Fixed
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -37,7 +32,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 
 ROOT_URLCONF = 'heartcheck_api.urls'
 
@@ -59,7 +53,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'heartcheck_api.wsgi.application'
 
-
 # Database
 DATABASES = {
     'default': {
@@ -68,17 +61,11 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
 ]
-
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
@@ -86,12 +73,9 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-
 # Static files
 STATIC_URL = 'static/'
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 # DRF
 REST_FRAMEWORK = {
@@ -103,21 +87,18 @@ REST_FRAMEWORK = {
     ),
 }
 
-
 # JWT
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=7),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
 }
 
-
-# CORS SETTINGS
+# ✅ CORS SETTINGS - Fixed origin URL
 CORS_ALLOWED_ORIGINS = [
-    "https://heartcheck-ai.vercel.app",
+    "https://heartcheck-ai-cm5o.vercel.app",   # ✅ Your actual Vercel URL
+    "https://heartcheck-ai.vercel.app",         # keep if you have custom domain too
 ]
-
 CORS_ALLOW_CREDENTIALS = True
-
 CORS_ALLOW_METHODS = [
     "DELETE",
     "GET",
@@ -126,7 +107,6 @@ CORS_ALLOW_METHODS = [
     "POST",
     "PUT",
 ]
-
 CORS_ALLOW_HEADERS = [
     "accept",
     "accept-encoding",
