@@ -14,15 +14,13 @@ export function AuthProvider({ children }) {
     if (token && savedUser) {
       setUser(JSON.parse(savedUser));
 
-      api.get('/profile', {
-        withCredentials: true
-      })
-      .then((res) => {
-        setUser(res.data);
-        localStorage.setItem('user', JSON.stringify(res.data));
-      })
-      .catch(() => {})
-      .finally(() => setLoading(false));
+      api.get('/profile')
+        .then((res) => {
+          setUser(res.data);
+          localStorage.setItem('user', JSON.stringify(res.data));
+        })
+        .catch(() => {})
+        .finally(() => setLoading(false));
 
     } else {
       setLoading(false);
@@ -30,13 +28,10 @@ export function AuthProvider({ children }) {
   }, []);
 
   const login = async (username, password) => {
-    const res = await api.post(
-      '/login',
-      { username, password },
-      {
-        withCredentials: true
-      }
-    );
+    const res = await api.post('/login', {
+      username,
+      password
+    });
 
     localStorage.setItem('access_token', res.data.access);
     localStorage.setItem('refresh_token', res.data.refresh);
@@ -48,13 +43,7 @@ export function AuthProvider({ children }) {
   };
 
   const register = async (data) => {
-    const res = await api.post(
-      '/register',
-      data,
-      {
-        withCredentials: true
-      }
-    );
+    const res = await api.post('/register', data);
 
     localStorage.setItem('access_token', res.data.access);
     localStorage.setItem('refresh_token', res.data.refresh);
