@@ -24,7 +24,7 @@ INSTALLED_APPS = [
 # Middleware
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware',   # ✅ Fixed
+    'django.middleware.security.SecurityMiddleware',  # ✅ Hyperlink remove பண்ணினேன்
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -93,10 +93,11 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
 }
 
-# ✅ CORS SETTINGS - Fixed origin URL
+# ✅ CORS SETTINGS
 CORS_ALLOWED_ORIGINS = [
-    "https://heartcheck-ai-cm5o.vercel.app",   # ✅ Your actual Vercel URL
-    "https://heartcheck-ai.vercel.app",         # keep if you have custom domain too
+    "https://heartcheck-ai-61w3.vercel.app",  # ✅ Screenshot-ல பார்த்த actual URL
+    "https://heartcheck-ai-cm5o.vercel.app",
+    "https://heartcheck-ai.vercel.app",
 ]
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_METHODS = [
